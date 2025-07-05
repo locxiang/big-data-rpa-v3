@@ -1,3 +1,4 @@
+#[cfg(target_os = "macos")]
 use log::{info};
 use std::path::Path;
 
