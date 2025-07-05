@@ -209,7 +209,6 @@ import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useProxyStore } from '../../stores/proxyStore';
 import { useAuthStore } from '../../stores/authStore';
-import { invoke } from '@tauri-apps/api/core';
 
 const router = useRouter();
 const proxyStore = useProxyStore();
