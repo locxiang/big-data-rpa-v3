@@ -611,3 +611,50 @@ pub fn get_network_devices() -> Result<Vec<NetworkDevice>> {
     info!("找到 {} 个网络设备", devices.len());
     Ok(devices)
 }
+
+/// 检查是否安装了抓包所需的系统组件（macOS上是ChmodBPF）
+#[cfg(target_os = "macos")]
+pub fn has_packet_capture_prerequisites() -> bool {
+    use log::{info};
+    use std::path::Path;
+
+    // 检查ChmodBPF服务是否存在
+    info!("检查ChmodBPF服务是否已安装...");
+    let chmodbpf_path = Path::new("/Library/LaunchDaemons/org.wireshark.ChmodBPF.plist");
+    if !chmodbpf_path.exists() {
+        return false;
+    }
+
+    // 打印ChmodBPF服务状态日志
+    info!("ChmodBPF服务文件存在，检查服务状态...");
+    
+    
+    return true;
+        
+}
+
+/// 在Windows上检查是否安装了Npcap
+#[cfg(target_os = "windows")]
+pub fn has_packet_capture_prerequisites() -> bool {
+    use log::{info};
+    use std::path::Path;
+    use std::process::Command;
+    
+    // 检查Npcap是否已安装
+    info!("检查Windows上Npcap是否已安装...");
+    
+    // 检查Npcap安装路径
+    let npcap_path = Path::new("C:\\Windows\\System32\\Npcap");
+    if npcap_path.exists() {
+        info!("检测到Npcap安装目录存在");
+        return true;
+    }
+    
+    return false;
+}
+
+/// 在其他平台上，默认返回false
+#[cfg(not(any(target_os = "windows", target_os = "macos")))]
+pub fn has_packet_capture_prerequisites() -> bool {
+    false;
+}

@@ -1,10 +1,8 @@
 pub mod packet_capture;
-pub mod admin_utils;
 pub mod auth;
 
 pub mod commands {
     use crate::packet_capture;
-    use crate::admin_utils;
     use crate::auth;
     use tauri::ipc::Channel;
 
@@ -50,7 +48,7 @@ pub mod commands {
     // 检查是否安装了ChmodBPF
     #[tauri::command]
     pub fn has_chmodbpf() -> bool {
-        admin_utils::has_chmodbpf()
+        packet_capture::has_packet_capture_prerequisites()
     }
     
     // 获取网络设备列表

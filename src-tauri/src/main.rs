@@ -55,15 +55,23 @@ fn main() {
                 info!("🔐 认证系统初始化成功");
             }
             
-            // 在macOS上检查是否安装了ChmodBPF
-            #[cfg(target_os = "macos")]
             {
-                if big_data_rpa_v3_lib::admin_utils::has_chmodbpf() {
+                if big_data_rpa_v3_lib::packet_capture::has_packet_capture_prerequisites() {
+                    #[cfg(target_os = "macos")]
                     info!("检测到ChmodBPF已安装，可以直接使用抓包功能");
+                    
+                    #[cfg(target_os = "windows")]
+                    info!("检测到Npcap已安装，可以直接使用抓包功能");
                 } else {
+                    #[cfg(target_os = "macos")]
                     info!("未检测到ChmodBPF，抓包功能可能受限");
+
+                    #[cfg(target_os = "windows")]
+                    info!("未检测到Npcap，抓包功能可能受限");
                 }
             }
+
+            
             
             // 注意：不再自动启动数据包捕获，而是由用户点击按钮触发
             info!("应用已启动，等待用户请求开始捕获");
