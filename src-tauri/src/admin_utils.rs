@@ -1,10 +1,9 @@
-#[cfg(target_os = "macos")]
-use log::{info};
-use std::path::Path;
-
 /// 检查是否安装了ChmodBPF（仅macOS）
 #[cfg(target_os = "macos")]
 pub fn has_chmodbpf() -> bool {
+    use log::{info};
+    use std::path::Path;
+
     // 检查ChmodBPF服务是否存在
     info!("检查ChmodBPF服务是否已安装...");
     let chmodbpf_path = Path::new("/Library/LaunchDaemons/org.wireshark.ChmodBPF.plist");
