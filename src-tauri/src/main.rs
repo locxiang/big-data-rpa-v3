@@ -3,6 +3,7 @@
 
 use tauri_plugin_log::{Builder, Target, TargetKind};
 use big_data_rpa_v3_lib::packet_capture;
+use big_data_rpa_v3_lib::auth;
 use log::{error, info};
 
 fn main() {
@@ -29,12 +30,29 @@ fn main() {
             big_data_rpa_v3_lib::commands::set_http_channel,
             big_data_rpa_v3_lib::commands::init_packet_capture,
             big_data_rpa_v3_lib::commands::stop_packet_capture,
-            big_data_rpa_v3_lib::commands::has_chmodbpf
+            big_data_rpa_v3_lib::commands::has_chmodbpf,
+            big_data_rpa_v3_lib::commands::get_network_devices,
+            big_data_rpa_v3_lib::commands::create_packet_window,
+            big_data_rpa_v3_lib::commands::focus_packet_window,
+            // Auth系统命令
+            big_data_rpa_v3_lib::commands::get_all_token_status,
+            big_data_rpa_v3_lib::commands::get_system_token,
+            big_data_rpa_v3_lib::commands::clear_system_token,
+            big_data_rpa_v3_lib::commands::clear_all_tokens,
+            big_data_rpa_v3_lib::commands::set_token_event_channel,
+            big_data_rpa_v3_lib::commands::get_token_event_history
         ])
         .setup(|app| {
             // 初始化 AppHandle
             if let Err(e) = packet_capture::init_app_handle(app.handle().clone()) {
                 error!("初始化 AppHandle 失败: {}", e);
+            }
+            
+            // 初始化认证系统
+            if let Err(e) = auth::init_auth_system() {
+                error!("初始化认证系统失败: {}", e);
+            } else {
+                info!("🔐 认证系统初始化成功");
             }
             
             // 在macOS上检查是否安装了ChmodBPF
@@ -55,9 +73,9 @@ fn main() {
         .on_window_event(|_event_window, event| {
             if let tauri::WindowEvent::CloseRequested { .. } = event {
                 info!("窗口关闭，停止数据包捕获");
-                if let Err(e) = packet_capture::stop_packet_capture() {
-                    error!("停止数据包捕获失败: {}", e);
-                }
+                // if let Err(e) = packet_capture::stop_packet_capture() {
+                //     error!("停止数据包捕获失败: {}", e);
+                // }
             }
         })
         .run(tauri::generate_context!())

@@ -2,7 +2,7 @@
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "big-data-rpa-v3",
   "version": "0.1.0",
-  "identifier": "com.big-data-rpa-v3.app",
+  "identifier": "com.big-data-rpa-v3",
   "build": {
     "beforeDevCommand": "pnpm dev",
     "devUrl": "http://localhost:1420",
@@ -12,9 +12,13 @@
   "app": {
     "windows": [
       {
-        "title": "big-data-rpa-v3",
-        "width": 800,
-        "height": 600
+        "title": "数字重庆业务数据巡查自动化系统",
+        "width": 1200,
+        "height": 800,
+        "resizable": false,
+        "center": true,
+        "minimizable": true,
+        "maximizable": false
       }
     ],
     "security": {
