@@ -1,7 +1,7 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "big-data-rpa-v3",
-  "version": "0.3.0",
+  "productName": "数字重庆业务数据巡查自动化系统",
+  "version": "0.4.0",
   "identifier": "com.big-data-rpa-v3",
   "build": {
     "beforeDevCommand": "pnpm dev",
