@@ -7,6 +7,8 @@
     type="win32"
   />
   <description>数字重庆业务数据巡查自动化系统</description>
+  
+  <!-- Visual C++ Runtime Dependencies -->
   <dependency>
     <dependentAssembly>
       <assemblyIdentity
@@ -19,40 +21,64 @@
       />
     </dependentAssembly>
   </dependency>
+  
+  <!-- Visual C++ 2015-2022 Redistributable -->
   <dependency>
     <dependentAssembly>
       <assemblyIdentity
         type="win32"
         name="Microsoft.VC143.CRT"
-        version="14.36.32532.0"
+        version="14.30.30704.0"
         processorArchitecture="amd64"
         publicKeyToken="1fc8b3b9a1e18e3b"
         language="*"
       />
     </dependentAssembly>
   </dependency>
+  
   <dependency>
     <dependentAssembly>
       <assemblyIdentity
         type="win32"
         name="Microsoft.VC143.CXXAMP"
-        version="14.36.32532.0"
+        version="14.30.30704.0"
         processorArchitecture="amd64"
         publicKeyToken="1fc8b3b9a1e18e3b"
         language="*"
       />
     </dependentAssembly>
   </dependency>
+
+  <!-- Universal CRT -->
+  <dependency>
+    <dependentAssembly>
+      <assemblyIdentity
+        type="win32"
+        name="Microsoft.Windows.UniversalCRT"
+        version="10.0.10240.16384"
+        processorArchitecture="amd64"
+        publicKeyToken="1fc8b3b9a1e18e3b"
+        language="*"
+      />
+    </dependentAssembly>
+  </dependency>
+
+  <!-- Application Security and Permissions -->
   <trustInfo xmlns="urn:schemas-microsoft-com:asm.v2">
     <security>
       <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
-        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+        <!-- 请求管理员权限以便网络包捕获 -->
+        <requestedExecutionLevel level="requireAdministrator" uiAccess="false" />
       </requestedPrivileges>
     </security>
   </trustInfo>
+
+  <!-- Windows Version Compatibility -->
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
     <application>
-      <!-- Windows 10 and Windows 11 -->
+      <!-- Windows 11 -->
+      <supportedOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}"/>
+      <!-- Windows 10 -->
       <supportedOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}"/>
       <!-- Windows 8.1 -->
       <supportedOS Id="{1f676c76-80e1-4239-95bb-83d0f6d0da78}"/>
@@ -62,4 +88,12 @@
       <supportedOS Id="{35138b9a-5d96-4fbd-8e2d-a2440225f93a}"/>
     </application>
   </compatibility>
+
+  <!-- DPI Awareness -->
+  <asmv3:application xmlns:asmv3="urn:schemas-microsoft-com:asm.v3">
+    <asmv3:windowsSettings>
+      <dpiAware xmlns="http://schemas.microsoft.com/SMI/2005/WindowsSettings">true</dpiAware>
+      <dpiAwareness xmlns="http://schemas.microsoft.com/SMI/2016/WindowsSettings">PerMonitorV2</dpiAwareness>
+    </asmv3:windowsSettings>
+  </asmv3:application>
 </assembly> 
