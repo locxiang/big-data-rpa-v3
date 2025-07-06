@@ -12,17 +12,6 @@ fn main() {
 }
 
 fn configure_windows_build() {
-    println!("cargo:rerun-if-changed=app.manifest");
-    
-    // 链接 Windows 清单文件
-    let manifest_path = PathBuf::from(env::var("CARGO_MANIFEST_DIR").unwrap())
-        .join("app.manifest");
-    
-    if manifest_path.exists() {
-        println!("cargo:rustc-link-arg-bin=big-data-rpa-v3=/MANIFEST:EMBED");
-        println!("cargo:rustc-link-arg-bin=big-data-rpa-v3=/MANIFESTINPUT:{}", manifest_path.display());
-    }
-    
     // 配置 npcap/pcap 库链接
     configure_pcap_linking();
     
