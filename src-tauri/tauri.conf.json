@@ -26,6 +26,11 @@
     }
   },
   "bundle": {
+    "windows": {
+      "webviewInstallMode": {
+        "type": "offlineInstaller"
+      }
+    },
     "active": true,
     "targets": "all",
     "icon": [
