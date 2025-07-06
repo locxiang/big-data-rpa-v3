@@ -29,6 +29,13 @@
     "windows": {
       "webviewInstallMode": {
         "type": "offlineInstaller"
+      },
+      "wix": {
+        "language": "zh-CN"
+      },
+      "nsis": {
+        "languages": ["SimpChinese", "English"],
+        "displayLanguageSelector": true
       }
     },
     "active": true,
