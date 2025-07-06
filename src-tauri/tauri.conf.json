@@ -1,7 +1,7 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "数字重庆业务数据巡查自动化系统",
-  "version": "0.4.0",
+  "productName": "big-data-rpa-v3",
+  "version": "0.6.0",
   "identifier": "com.big-data-rpa-v3",
   "build": {
     "beforeDevCommand": "pnpm dev",
@@ -28,15 +28,16 @@
   "bundle": {
     "windows": {
       "webviewInstallMode": {
-        "type": "offlineInstaller"
+        "type": "embedBootstrapper"
       },
+      "allowDowngrades": false,
       "wix": {
-        "language": "zh-CN"
+        "language": "zh-CN",
+        "template": "main.wxs"
       },
-      "nsis": {
-        "languages": ["SimpChinese", "English"],
-        "displayLanguageSelector": true
-      }
+      "certificateThumbprint": null,
+      "digestAlgorithm": "sha256",
+      "timestampUrl": null
     },
     "active": true,
     "targets": "all",
@@ -49,6 +50,14 @@
     ],
     "macOS": {
       "entitlements": "entitlements.plist"
-    }
+    },
+    "resources": [
+      "resources/*"
+    ],
+    "externalBin": [],
+    "copyright": "Copyright © 2024 数字重庆业务数据巡查自动化系统",
+    "category": "DeveloperTool",
+    "shortDescription": "数字重庆业务数据巡查自动化系统",
+    "longDescription": "基于 Tauri 的数字重庆业务数据巡查自动化系统，提供网络包捕获和数据分析功能。"
   }
 }

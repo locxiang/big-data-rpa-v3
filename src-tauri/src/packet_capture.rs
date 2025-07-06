@@ -638,7 +638,6 @@ pub fn has_packet_capture_prerequisites() -> bool {
 pub fn has_packet_capture_prerequisites() -> bool {
     use log::{info};
     use std::path::Path;
-    use std::process::Command;
     
     // 检查Npcap是否已安装
     info!("检查Windows上Npcap是否已安装...");
