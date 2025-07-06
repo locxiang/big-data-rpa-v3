@@ -24,7 +24,19 @@
       <assemblyIdentity
         type="win32"
         name="Microsoft.VC143.CRT"
-        version="14.0.0.0"
+        version="14.36.32532.0"
+        processorArchitecture="amd64"
+        publicKeyToken="1fc8b3b9a1e18e3b"
+        language="*"
+      />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly>
+      <assemblyIdentity
+        type="win32"
+        name="Microsoft.VC143.CXXAMP"
+        version="14.36.32532.0"
         processorArchitecture="amd64"
         publicKeyToken="1fc8b3b9a1e18e3b"
         language="*"
