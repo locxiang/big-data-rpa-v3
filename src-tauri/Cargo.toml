@@ -30,8 +30,3 @@ log = "0.4"
 anyhow = "1.0"
 once_cell = "1.18"
 regex = "1.11.1"
-
-[package.metadata.tauri.bundle.windows]
-webview-install-mode = ["download"]
-manifest-file = "manifest.xml"
-
